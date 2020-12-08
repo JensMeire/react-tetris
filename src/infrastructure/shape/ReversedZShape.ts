@@ -1,14 +1,12 @@
-import IShape from "./IShape";
+import Shape from "infrastructure/shape/Shape";
 
-export default class ReversedZShape implements IShape {
-  color: string;
-  grid: Array<Array<boolean>>;
-
+export default class ReversedZShape extends Shape {
   constructor() {
-    this.color = "#EEEEEE";
-    this.grid = [
+    const color = "#EEEEEE";
+    const grid = [
       [true, true, false],
       [false, true, true]
     ];
+    super(grid, color);
   }
 }

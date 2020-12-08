@@ -1,14 +1,12 @@
-import IShape from "./IShape";
+import Shape from "infrastructure/shape/Shape";
 
-export default class ZShape implements IShape {
-  color: string;
-  grid: Array<Array<boolean>>;
-
+export default class ZShape extends Shape {
   constructor() {
-    this.color = "#CCCCCC";
-    this.grid = [
+    const color = "#CCCCCC";
+    const grid = [
       [false, true, true],
       [true, true, false]
     ];
+    super(grid, color);
   }
 }

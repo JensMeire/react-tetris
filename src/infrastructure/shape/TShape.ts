@@ -1,14 +1,12 @@
-import IShape from "./IShape";
+import Shape from "infrastructure/shape/Shape";
 
-export default class TShape implements IShape {
-  color: string;
-  grid: Array<Array<boolean>>;
-
+export default class TShape extends Shape {
   constructor() {
-    this.color = "#AAAAAA";
-    this.grid = [
+    const color = "#AAAAAA";
+    const grid = [
       [true, true, true],
       [false, true, false]
     ];
+    super(grid, color);
   }
 }

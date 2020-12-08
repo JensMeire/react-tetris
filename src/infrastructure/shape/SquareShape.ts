@@ -1,14 +1,12 @@
-import IShape from "./IShape";
+import Shape from "infrastructure/shape/Shape";
 
-export default class SquareShape implements IShape {
-  color: string;
-  grid: Array<Array<boolean>>;
-
+export default class SquareShape extends Shape {
   constructor() {
-    this.color = "#888888";
-    this.grid = [
+    const color = "#888888";
+    const grid = [
       [true, true],
       [true, true]
-    ]; 
+    ];
+    super(grid, color);
   }
 }

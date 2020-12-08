@@ -1,15 +1,13 @@
-import IShape from "./IShape";
+import Shape from "infrastructure/shape/Shape";
 
-export default class LShape implements IShape {
-  color: string;
-  grid: Array<Array<boolean>>;
-
+export default class LShape extends Shape {
   constructor() {
-    this.color = "#222222";
-    this.grid = [
+    const color = "#222222";
+    const grid = [
       [true, false],
       [true, false],
       [true, true]
     ];
+    super(grid, color)
   }
 }
