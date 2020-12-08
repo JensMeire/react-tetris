@@ -1,14 +1,14 @@
 import IShape from "infrastructure/shape/IShape";
 
 export default class Grid {
-  private playField: Array<Array<boolean>>
-  private currentShape: IShape | undefined;
-  private currentShapePosition: [number, number];
+  private playField: Array<Array<string | undefined>>
+  public currentShape: IShape | undefined;
+  public currentShapePosition: [number, number];
   private readonly rowCount: number;
   private readonly columnCount: number;
 
   constructor() {
-    this.rowCount = 40;
+    this.rowCount = 25;
     this.columnCount = 10;
     this.playField = [];
     this.currentShapePosition = [0, 0]
@@ -18,7 +18,7 @@ export default class Grid {
   private initializeGrid() {
     for (let row = 0; row < this.rowCount; row++) {
       const row = [];
-      for (let column = 0; column < this.columnCount; column++) row.push(false);
+      for (let column = 0; column < this.columnCount; column++) row.push(undefined);
       this.playField.push(row);
     }
   }
@@ -27,12 +27,32 @@ export default class Grid {
     this.currentShapePosition = [x, y];
   }
 
+  public getPlayField() : Array<Array<string | undefined>> {
+    return this.playField;
+  }
+
+  public getColor(x: number, y: number): string | undefined {
+    const playfieldValue = this.playField[y][x];
+    if(playfieldValue) return playfieldValue;
+    if(!this.currentShape) return;
+    const [currentX, currentY] = this.currentShapePosition;
+    const [width, height] = this.currentShape.getSize();
+    if(y <= currentY && y >= (currentY - height + 1) && x >= currentX && x <= (currentX + width - 1)) {
+      const grid = this.currentShape.getGrid();
+      const collide = grid[y - (currentY - height + 1)][x - currentX]
+      if(collide)
+        return this.currentShape.getColor();
+    }
+    return;
+  }
+
   public setNewCurrentShape(shape: IShape): void {
     this.currentShape = shape;
     const [width, height] = shape.getSize();
     const centerY = height - 1;
     const centerX = Math.floor(width / 2);
     this.setCurrentPosition(centerX, centerY);
+    console.log('newshape')
   }
 
   public moveLeft(): boolean {
@@ -56,6 +76,7 @@ export default class Grid {
     return true;
   }
 
+
   public moveRight(): boolean {
     if (!this.currentShape)
       return false;
@@ -77,7 +98,7 @@ export default class Grid {
     return true;
   }
 
-  public moveDown(): boolean {
+  private canMoveDown(): boolean {
     if (!this.currentShape)
       return false;
 
@@ -97,5 +118,28 @@ export default class Grid {
 
     this.currentShapePosition = [currentX, currentY + 1];
     return true;
+  }
+
+  private lockShape(): void {
+    if (!this.currentShape)
+      return;
+
+    const [width, height] = this.currentShape.getSize();
+    const [currentX, currentY] = this.currentShapePosition;
+
+    const shapeGrid = this.currentShape.getGrid();
+    for (let y = currentY, i = height - 1; i >= 0; y--, i--) {
+      for (let x = currentX, j = 0; j < width; x++, j++) {
+        if(shapeGrid[i][j])
+          this.playField[y][x] = this.currentShape.getColor();
+      }
+    }
+  }
+
+  public moveDown(): boolean {
+    if(this.canMoveDown()) return true;
+    this.lockShape();
+    return false;
+
   }
 }

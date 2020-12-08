@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed50663-20f6-46a0-9772-9e5c1abbf394" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/cell/Cell.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/cell/Cell.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/game/Game.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/grid/Grid.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/gridrow/GridRow.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/gridrow/GridRow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/game/Game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/Game.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/grid/Grid.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/grid/Grid.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/IShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/IShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/LShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/LShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/LineShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/LineShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/ReversedLShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/ReversedLShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/ReversedZShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/ReversedZShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/Shape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/Shape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/SquareShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/SquareShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/TShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/TShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/ZShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/ZShape.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -30,7 +34,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1lIn5xkddQEuthwxSGziJNpVL1C" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,6 +47,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,6 +60,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
     <property name="ts.external.directory.path" value="C:\Users\jensm\.repos\react-tetris\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jensm\.repos\react-tetris\src\components\grid" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -81,7 +93,7 @@
       <workItem from="1607295539366" duration="5784000" />
       <workItem from="1607301982063" duration="5954000" />
       <workItem from="1607357580256" duration="4295000" />
-      <workItem from="1607379770028" duration="5357000" />
+      <workItem from="1607379770028" duration="19579000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1607378746529</created>
@@ -97,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607379962083</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Extend Shape and Grid functionality">
+      <created>1607388738352</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607388738352</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +137,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Extend Shape and Grid functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extend Shape and Grid functionality" />
   </component>
 </project>
