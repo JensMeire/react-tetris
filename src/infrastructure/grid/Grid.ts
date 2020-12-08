@@ -140,6 +140,5 @@ export default class Grid {
     if(this.canMoveDown()) return true;
     this.lockShape();
     return false;
-
   }
 }
