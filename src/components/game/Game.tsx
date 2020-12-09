@@ -5,7 +5,7 @@ import GridComponent from "components/grid/Grid";
 const GameComponent = (): React.ReactElement => {
   const game = new Game();
   return <div>
-    <GridComponent grid={game.getGrid()}/>
+    <GridComponent/>
   </div>
 }
 export default GameComponent;
