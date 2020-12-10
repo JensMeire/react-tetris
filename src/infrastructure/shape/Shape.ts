@@ -13,31 +13,31 @@ export default class Shape implements IShape {
     return [this.grid[0].length, this.grid.length];
   }
 
-  rotateRight(): void {
+  rotateLeft(): IShape {
+    const [width, height] = this.getSize();
+    const newGrid: Array<Array<boolean>> = [];
+    for (let x = width - 1; x >= 0; x--) {
+      const newRow = [];
+      for (let y = 0; y < height; y++) {
+        newRow.push(this.grid[y][x]);
+      }
+      newGrid.push(newRow);
+    }
+    return new Shape(newGrid, this.color);
+  }
+
+  rotateRight(): IShape {
     const [width, height] = this.getSize();
     const newGrid: Array<Array<boolean>> = [];
     for (let x = 0; x < width; x++) {
       const newRow = [];
-      for (let y = 0; y < height; y++) {
-        newRow.push(this.grid[y][x]);
-      }
-      newGrid.push(newRow);
-    }
-    this.grid = newGrid;
-  }
-
-  rotateLeft(): void {
-    const [width, height] = this.getSize();
-    const newGrid: Array<Array<boolean>> = [];
-    for (let x = width -1; x >= 0; x--) {
-      const newRow = [];
-      for (let y = 0; y < height; y++) {
+      for (let y = height - 1; y >= 0; y--) {
         newRow.push(this.grid[y][x]);
       }
       newGrid.push(newRow);
     }
 
-    this.grid = newGrid;
+    return new Shape(newGrid, this.color);
   }
 
   getColor(): string {

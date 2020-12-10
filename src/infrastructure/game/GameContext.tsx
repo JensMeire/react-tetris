@@ -34,6 +34,8 @@ interface IGameContext {
   canMoveRight: () => boolean;
   moveRight: () => void;
   lockShape: () => void;
+  rotateLeft: () => void;
+  rotateRight: () => void;
 }
 
 const GameContext = createContext<IGameContext>({
@@ -57,6 +59,10 @@ const GameContext = createContext<IGameContext>({
   moveRight: () => {
   },
   lockShape: () => {
+  },
+  rotateLeft: () => {
+  },
+  rotateRight: () => {
   }
 } as IGameContext)
 
@@ -92,6 +98,17 @@ const GameContextProvider = (props: IProps) => {
     setCurrentShapePosition([x, y])
   }
 
+  const rotateLeft = (): void => {
+    setCurrentShape(shape => {
+      return shape.rotateLeft();
+    })
+  }
+
+  const rotateRight = (): void => {
+    setCurrentShape(shape => {
+      return shape.rotateRight();
+    })
+  }
 
   const getColor = (x: number, y: number): string | undefined => {
     return getColorAction(x, y, grid, currentShape, currentShapePosition);
@@ -151,7 +168,9 @@ const GameContextProvider = (props: IProps) => {
         moveLeft: moveLeft,
         canMoveRight: canMoveRight,
         moveRight: moveRight,
-        lockShape: lockShape
+        lockShape: lockShape,
+        rotateLeft: rotateLeft,
+        rotateRight: rotateRight
       }
     }>
     {props.children}

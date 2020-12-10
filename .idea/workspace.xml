@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7ed50663-20f6-46a0-9772-9e5c1abbf394" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/game/Game.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/grid/Grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/Grid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/game/Actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/Actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/game/GameContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/GameContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/LShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/LShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/LineShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/LineShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/ReversedLShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/ReversedLShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/ReversedZShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/ReversedZShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/SquareShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/SquareShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/TShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/TShape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/ZShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/ZShape.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/IShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/IShape.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/shape/Shape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/shape/Shape.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +89,7 @@
       <workItem from="1607295539366" duration="5784000" />
       <workItem from="1607301982063" duration="5954000" />
       <workItem from="1607357580256" duration="4295000" />
-      <workItem from="1607379770028" duration="37841000" />
+      <workItem from="1607379770028" duration="42036000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1607378746529</created>
@@ -140,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607522231437</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixing colission">
+      <created>1607639266278</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607639266278</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +166,7 @@
     <MESSAGE value="Moving functionality Grid to GameContext" />
     <MESSAGE value="start of GameContext" />
     <MESSAGE value="GameContext working CurrentShape" />
-    <option name="LAST_COMMIT_MESSAGE" value="GameContext working CurrentShape" />
+    <MESSAGE value="Fixing colission" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing colission" />
   </component>
 </project>

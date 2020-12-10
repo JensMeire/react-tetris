@@ -4,8 +4,7 @@ import Cell from "components/cell/Cell";
 import {useGame} from "infrastructure/game/GameContext";
 
 const GridComponent = (): React.ReactElement => {
-  const {grid, getColor, initializeNewShape, moveLeft, moveDown, moveRight} = useGame()
-  console.log("")
+  const {grid, getColor, initializeNewShape, moveLeft, moveDown, moveRight, rotateRight, rotateLeft} = useGame()
   return <div>
     <div>
       {grid.map((r, i) => (
@@ -31,6 +30,12 @@ const GridComponent = (): React.ReactElement => {
 
       <button onClick={() => moveRight()}>
        right
+      </button>
+      <button onClick={() => rotateLeft()}>
+        rotate left
+      </button>
+      <button onClick={() => rotateRight()}>
+        rotate right
       </button>
     </div>
   </div>;
