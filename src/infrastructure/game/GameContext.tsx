@@ -73,16 +73,19 @@ const GameContextProvider = (props: IProps) => {
   const rowCount = useMemo(() => 25, []);
 
   const initializeGrid = () => {
+    const tempGrid = [];
     for (let row = 0; row < rowCount; row++) {
       const row = [];
       for (let column = 0; column < columnCount; column++) row.push(undefined);
-      grid.push(row);
+      tempGrid.push(row);
     }
+    setGrid(tempGrid);
   }
 
   useEffect(() => {
     initializeGrid();
     initializeNewCurrentShape();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setCurrentPosition = (x: number, y: number) => {
@@ -103,7 +106,7 @@ const GameContextProvider = (props: IProps) => {
   }
 
   const moveLeft = (): void => {
-    if(canMoveLeft())
+    if (canMoveLeft())
       return moveLeftAction(currentShapePosition, setCurrentPosition);
   }
 
@@ -113,7 +116,7 @@ const GameContextProvider = (props: IProps) => {
 
 
   const moveRight = (): void => {
-    if(canMoveRight())
+    if (canMoveRight())
       return moveRightAction(currentShapePosition, setCurrentPosition);
   }
 
@@ -126,8 +129,11 @@ const GameContextProvider = (props: IProps) => {
   }
 
   const moveDown = (): void => {
-    if (!canMoveDown())
+    if (!canMoveDown()) {
       lockShape();
+      initializeNewCurrentShape();
+      return;
+    }
     moveDownAction(currentShapePosition, setCurrentPosition);
   }
 
@@ -154,4 +160,4 @@ const GameContextProvider = (props: IProps) => {
 
 const useGame = () => useContext(GameContext);
 
-export { GameContextProvider, useGame };
+export {GameContextProvider, useGame};

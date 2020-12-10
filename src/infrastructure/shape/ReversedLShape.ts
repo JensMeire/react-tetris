@@ -2,7 +2,7 @@ import Shape from "infrastructure/shape/Shape";
 
 export default class ReversedLShape extends Shape {
   constructor() {
-    const color = "#666666";
+    const color = "#3fc20c";
     const grid = [
       [false, true],
       [false, true],

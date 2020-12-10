@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import GridRow from "components/gridrow/GridRow";
 import Cell from "components/cell/Cell";
-import getRandomShape from "infrastructure/shape/ShapeFactory";
 import {useGame} from "infrastructure/game/GameContext";
 
 const GridComponent = (): React.ReactElement => {
-  const {grid, getColor, initializeNewShape} = useGame()
+  const {grid, getColor, initializeNewShape, moveLeft, moveDown, moveRight} = useGame()
   console.log("")
   return <div>
     <div>
@@ -20,6 +19,18 @@ const GridComponent = (): React.ReactElement => {
     <div>
       <button onClick={() => initializeNewShape()}>
         Spwan
+      </button>
+
+      <button onClick={() => moveLeft()}>
+        left
+      </button>
+
+      <button onClick={() => moveDown()}>
+        down
+      </button>
+
+      <button onClick={() => moveRight()}>
+       right
       </button>
     </div>
   </div>;

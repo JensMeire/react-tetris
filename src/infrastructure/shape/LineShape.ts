@@ -2,7 +2,7 @@ import Shape from "infrastructure/shape/Shape";
 
 export default class LineShape extends Shape {
   constructor() {
-    const color = "#444444";
+    const color = "#eb4034";
     const grid = [
       [true],
       [true],

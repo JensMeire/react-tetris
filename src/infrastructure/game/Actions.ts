@@ -25,14 +25,13 @@ export const initializeNewCurrentShape = (shape: IShape, setCurrentShape: ShapeS
   const centerY = height - 1;
   const centerX = Math.floor((columnCount - width) / 2);
   setCurrentShapePosition(centerX, centerY);
-  console.log('newshape')
 }
 
 export const canMoveLeft = (currentShape: IShape, currentShapePosition: Position, grid: Grid): boolean => {
   if (!currentShape)
     return false;
 
-  const [, height] = currentShape.getSize();
+  const [width, height] = currentShape.getSize();
   const [currentX, currentY] = currentShapePosition;
 
   if (currentX === 0) return false;
@@ -42,8 +41,9 @@ export const canMoveLeft = (currentShape: IShape, currentShapePosition: Position
   const shapeGrid = currentShape.getGrid();
 
   for (let y = endY, i = height - 1; i >= 0; y--, i--) {
-    if (grid[y][checkX] && shapeGrid[y][0])
-      return false;
+    for (let x = 0; x < width; x++)
+      if (grid[y][checkX + x] && shapeGrid[i][x])
+        return false;
   }
 
   return true;
@@ -68,8 +68,9 @@ export const canMoveRight = (currentShape: IShape, currentShapePosition: Positio
   const checkX = currentX + width;
   const shapeGrid = currentShape.getGrid();
   for (let y = endY, i = height - 1; i >= 0; y--, i--) {
-    if (grid[y][checkX] && shapeGrid[y][width - 1])
-      return false;
+    for (let x = width - 1, j = 0; x >= 0; x--, j++)
+      if (grid[y][checkX - j] && shapeGrid[i][x])
+        return false;
   }
   return true;
 }
@@ -94,8 +95,9 @@ export const canMoveDown = (currentShape: IShape, currentShapePosition: Position
   const shapeGrid = currentShape.getGrid();
 
   for (let x = currentX, i = 0; i < width; x++, i++) {
-    if (grid[checkY][x] && shapeGrid[height - 1][x])
-      return false;
+    for (let y = height - 1, j = 0; y >= 0; y--, j++)
+      if (grid[checkY - j][x] && shapeGrid[y][i])
+        return false;
   }
 
   return true;
