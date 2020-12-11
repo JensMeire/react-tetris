@@ -1,5 +1,5 @@
 import IShape from "infrastructure/shape/IShape";
-import React, {createContext, useContext, useEffect, useMemo, useState} from "react";
+import React, {createContext, useCallback, useContext, useEffect, useMemo, useState} from "react";
 import {
   getColor as getColorAction,
   lockShape as lockShapeAction,
@@ -12,49 +12,37 @@ import {
   initializeNewCurrentShape as initializeNewCurrentShapeAction
 } from "./Actions"
 import getRandomShape from "infrastructure/shape/ShapeFactory";
+import Game from "infrastructure/game/Game";
 
 export type Color = string | undefined
 export type Grid = Array<Array<Color>>
 export type Position = [number, number];
 const EmptyGrid = [] as Grid;
 const PositionZero = [0, 0] as Position;
-const EmptyShape = {} as IShape;
-
 
 interface IGameContext {
   grid: Grid;
-  currentShape: IShape;
+  currentShape: IShape | undefined;
   currentShapePosition: Position;
   getColor: (x: number, y: number) => Color;
-  initializeNewShape: () => void;
-  canMoveDown: () => boolean;
   moveDown: () => void;
-  canMoveLeft: () => boolean;
   moveLeft: () => void;
-  canMoveRight: () => boolean;
   moveRight: () => void;
   lockShape: () => void;
   rotateLeft: () => void;
   rotateRight: () => void;
+  startNewGame: () => void;
 }
 
 const GameContext = createContext<IGameContext>({
   grid: EmptyGrid,
-  currentShape: EmptyShape,
+  currentShape: undefined,
   currentShapePosition: PositionZero,
   getColor: (x: number, y: number) => {
   },
-  initializeNewShape: () => {
-  },
-  canMoveDown: () => {
-  },
   moveDown: () => {
   },
-  canMoveLeft: () => {
-  },
   moveLeft: () => {
-  },
-  canMoveRight: () => {
   },
   moveRight: () => {
   },
@@ -63,6 +51,8 @@ const GameContext = createContext<IGameContext>({
   rotateLeft: () => {
   },
   rotateRight: () => {
+  },
+  startNewGame: () => {
   }
 } as IGameContext)
 
@@ -73,12 +63,13 @@ interface IProps {
 
 const GameContextProvider = (props: IProps) => {
   const [grid, setGrid] = useState<Grid>(EmptyGrid);
-  const [currentShape, setCurrentShape] = useState<IShape>(EmptyShape);
+  const [currentShape, setCurrentShape] = useState<IShape | undefined>(undefined);
   const [currentShapePosition, setCurrentShapePosition] = useState<Position>(PositionZero);
+  const [game, setGame] = useState<Game | undefined>()
   const columnCount = useMemo(() => 10, []);
   const rowCount = useMemo(() => 25, []);
 
-  const initializeGrid = () => {
+  const initializeGrid = useCallback(() => {
     const tempGrid = [];
     for (let row = 0; row < rowCount; row++) {
       const row = [];
@@ -86,73 +77,88 @@ const GameContextProvider = (props: IProps) => {
       tempGrid.push(row);
     }
     setGrid(tempGrid);
-  }
+  }, [setGrid, columnCount, rowCount]);
+
 
   useEffect(() => {
     initializeGrid();
-    initializeNewCurrentShape();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const setCurrentPosition = (x: number, y: number) => {
+  const setCurrentPosition = useCallback((x: number, y: number) => {
     setCurrentShapePosition([x, y])
-  }
+  }, [setCurrentShapePosition]);
 
-  const rotateLeft = (): void => {
+  const rotateLeft = useCallback((): void => {
     setCurrentShape(shape => {
-      return shape.rotateLeft();
+      return shape?.rotateLeft();
     })
-  }
+  }, [setCurrentShape]);
 
-  const rotateRight = (): void => {
+  const rotateRight = useCallback((): void => {
     setCurrentShape(shape => {
-      return shape.rotateRight();
+      return shape?.rotateRight();
     })
-  }
+  }, [setCurrentShape]);
 
-  const getColor = (x: number, y: number): string | undefined => {
+  const getColor = useCallback((x: number, y: number): string | undefined => {
     return getColorAction(x, y, grid, currentShape, currentShapePosition);
-  }
+  }, [grid, currentShape, currentShapePosition])
 
-  const initializeNewCurrentShape = (): void => {
+  const initializeNewCurrentShape = useCallback((): void => {
     return initializeNewCurrentShapeAction(getRandomShape(), setCurrentShape, setCurrentPosition, columnCount);
-  }
+  }, [setCurrentShape, setCurrentPosition, columnCount]);
 
-  const canMoveLeft = (): boolean => {
+  const canMoveLeft = useCallback((): boolean => {
     return canMoveLeftAction(currentShape, currentShapePosition, grid);
-  }
+  }, [currentShape, currentShapePosition, grid])
 
-  const moveLeft = (): void => {
+  const moveLeft = useCallback((): void => {
     if (canMoveLeft())
       return moveLeftAction(currentShapePosition, setCurrentPosition);
-  }
+  }, [canMoveLeft, currentShapePosition, setCurrentPosition]);
 
-  const canMoveRight = (): boolean => {
+  const canMoveRight = useCallback((): boolean => {
     return canMoveRightAction(currentShape, currentShapePosition, grid, columnCount);
-  }
+  }, [currentShape, currentShapePosition, grid, columnCount]);
 
 
-  const moveRight = (): void => {
+  const moveRight = useCallback((): void => {
     if (canMoveRight())
       return moveRightAction(currentShapePosition, setCurrentPosition);
-  }
+  }, [canMoveRight, currentShapePosition, setCurrentPosition]);
 
-  const canMoveDown = (): boolean => {
+  const canMoveDown = useCallback((): boolean => {
     return canMoveDownAction(currentShape, currentShapePosition, grid, rowCount);
-  }
+  }, [currentShape, currentShapePosition, grid, rowCount]);
 
-  const lockShape = (): void => {
+  const lockShape = useCallback((): void => {
     return lockShapeAction(currentShape, currentShapePosition, grid);
-  }
+  }, [currentShapePosition, grid, currentShape])
 
-  const moveDown = (): void => {
+  const moveDown = useCallback((): void => {
     if (!canMoveDown()) {
       lockShape();
       initializeNewCurrentShape();
       return;
     }
     moveDownAction(currentShapePosition, setCurrentPosition);
-  }
+  }, [canMoveDown, lockShape, initializeNewCurrentShape, currentShapePosition, setCurrentPosition]);
+
+
+  const startNewGame = useCallback(() => {
+    setGame(new Game());
+    initializeNewCurrentShape();
+    const interval = setInterval(() => moveDown(), 300);
+  }, [setGame, initializeNewCurrentShape]);
+
+
+  // useEffect(() => {
+  //   if(!game) return;
+  //   const interval = setInterval(() => moveDown(), 300);
+  //   return () => clearInterval(interval);
+  // }, [game, moveDown])
 
   return <GameContext.Provider
     value={
@@ -161,16 +167,13 @@ const GameContextProvider = (props: IProps) => {
         currentShape: currentShape,
         currentShapePosition: currentShapePosition,
         getColor: getColor,
-        initializeNewShape: initializeNewCurrentShape,
-        canMoveDown: canMoveDown,
         moveDown: moveDown,
-        canMoveLeft: canMoveLeft,
         moveLeft: moveLeft,
-        canMoveRight: canMoveRight,
         moveRight: moveRight,
         lockShape: lockShape,
         rotateLeft: rotateLeft,
-        rotateRight: rotateRight
+        rotateRight: rotateRight,
+        startNewGame: startNewGame
       }
     }>
     {props.children}

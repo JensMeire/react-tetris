@@ -4,10 +4,11 @@ import {Grid, Position} from "infrastructure/game/GameContext";
 type ShapeSetter = (shape: IShape) => void;
 type PositionSetter = (x: number, y: number) => void;
 
-export const getColor = (x: number, y: number, grid: Grid, currentShape: IShape, currentShapePosition: Position): string | undefined => {
+export const getColor = (x: number, y: number, grid: Grid, currentShape: IShape | undefined, currentShapePosition: Position): string | undefined => {
+  if(!currentShape) return;
   const value = grid[y][x];
   if (value) return value;
-  if (!currentShape) return;
+
   const [currentX, currentY] = currentShapePosition;
   const [width, height] = currentShape.getSize();
   if (y <= currentY && y >= (currentY - height + 1) && x >= currentX && x <= (currentX + width - 1)) {
@@ -27,7 +28,7 @@ export const initializeNewCurrentShape = (shape: IShape, setCurrentShape: ShapeS
   setCurrentShapePosition(centerX, centerY);
 }
 
-export const canMoveLeft = (currentShape: IShape, currentShapePosition: Position, grid: Grid): boolean => {
+export const canMoveLeft = (currentShape: IShape | undefined, currentShapePosition: Position, grid: Grid): boolean => {
   if (!currentShape)
     return false;
 
@@ -54,7 +55,7 @@ export const moveLeft = (currentShapePosition: Position, setCurrentShapePosition
   setCurrentShapePosition(currentX - 1, currentY);
 }
 
-export const canMoveRight = (currentShape: IShape, currentShapePosition: Position, grid: Grid, columnCount: number): boolean => {
+export const canMoveRight = (currentShape: IShape | undefined, currentShapePosition: Position, grid: Grid, columnCount: number): boolean => {
   if (!currentShape)
     return false;
 
@@ -81,7 +82,7 @@ export const moveRight = (currentShapePosition: Position, setCurrentShapePositio
   setCurrentShapePosition(currentX + 1, currentY);
 }
 
-export const canMoveDown = (currentShape: IShape, currentShapePosition: Position, grid: Grid, rowCount: number): boolean => {
+export const canMoveDown = (currentShape: IShape | undefined, currentShapePosition: Position, grid: Grid, rowCount: number): boolean => {
   if (!currentShape)
     return false;
 
@@ -103,7 +104,7 @@ export const canMoveDown = (currentShape: IShape, currentShapePosition: Position
   return true;
 }
 
-export const lockShape = (currentShape: IShape, currentShapePosition: Position, grid: Grid): void => {
+export const lockShape = (currentShape: IShape | undefined, currentShapePosition: Position, grid: Grid): void => {
   if (!currentShape)
     return;
 
