@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed50663-20f6-46a0-9772-9e5c1abbf394" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/events/Event.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/events/EventEmitter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/events/EventType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/utils/Types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/Grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/Grid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/game/Actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/Actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/game/GameContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/GameContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-tetris-copy/react-tetris" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -88,7 +90,7 @@
       <workItem from="1607295539366" duration="5784000" />
       <workItem from="1607301982063" duration="5954000" />
       <workItem from="1607357580256" duration="4295000" />
-      <workItem from="1607379770028" duration="47938000" />
+      <workItem from="1607379770028" duration="64255000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1607378746529</created>
@@ -153,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607645340330</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="automatic down">
+      <created>1607724300119</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607724300120</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +191,7 @@
     <MESSAGE value="Fixing colission" />
     <MESSAGE value="Added rotation" />
     <MESSAGE value="Keyboard support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Keyboard support" />
+    <MESSAGE value="automatic down" />
+    <option name="LAST_COMMIT_MESSAGE" value="automatic down" />
   </component>
 </project>
