@@ -1,3 +1,5 @@
+import {generateUniqueID} from "web-vitals/dist/lib/generateUniqueID";
+
 type EventMap = Record<string, any>;
 type EventKey<T extends EventMap> = string & keyof T;
 type EventCallback<T> = (payload: T | undefined) => void;
@@ -6,8 +8,8 @@ type EventSubscriber<T> = {
   callback: EventCallback<T>;
 }
 
-interface IEmitter<T extends EventMap> {
-  subscribe<U extends EventKey<T>>(eventName: U, callback: EventCallback<T[U]>, subscriberId: string): void;
+export interface IEmitter<T extends EventMap> {
+  subscribe<U extends EventKey<T>>(eventName: U, callback: EventCallback<T[U]>, subscriberId?: string | undefined): string;
   unsubscribe<U extends EventKey<T>>(eventName: U, subscriberId: string): void;
   emit<U extends EventKey<T>>(eventName: U, payload: T[U] | undefined): void;
 }
@@ -28,7 +30,9 @@ export default class EventEmitter<T extends EventMap> implements IEmitter<T> {
     subscriptions.forEach(s => s.callback(payload));
   }
 
-  subscribe<U extends EventKey<T>>(eventName: U, callback: EventCallback<T[U]>, subscriberId: string): void {
+  subscribe<U extends EventKey<T>>(eventName: U, callback: EventCallback<T[U]>, subscriberId: string | undefined = undefined): string {
+    if(!subscriberId)
+      subscriberId = generateUniqueID();
     const subscriptions = this._subscriptions[eventName] ?? [];
     if (subscriptions.find(s => s.id === subscriberId))
       throw new Error(`Subscriber '${subscriberId}'  on event '${eventName}' already exists`);
@@ -37,6 +41,8 @@ export default class EventEmitter<T extends EventMap> implements IEmitter<T> {
       id: subscriberId,
       callback: callback
     } as EventSubscriber<T[U]>];
+
+    return subscriberId;
   }
 
   unsubscribe<U extends EventKey<T>>(eventName: U, subscriberId: string): void {
