@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed50663-20f6-46a0-9772-9e5c1abbf394" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/game/GameActions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/BoardModule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/IBoardModule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/CollisionDetector/CollisionDetector.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/CollisionDetector/ICollisionDetector.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/IPlayableShapeModule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/PlayableShapeModule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/ISettingsModule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/SettingsModule.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/game/GameHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/GameHandler.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +67,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jensm\.repos\react-tetris\src\infrastructure\modules\CollisionDetector" />
       <recent name="C:\Users\jensm\.repos\react-tetris\src\components\grid" />
     </key>
   </component>
@@ -86,7 +98,8 @@
       <workItem from="1607295539366" duration="5784000" />
       <workItem from="1607301982063" duration="5954000" />
       <workItem from="1607357580256" duration="4295000" />
-      <workItem from="1607379770028" duration="71486000" />
+      <workItem from="1607379770028" duration="75835000" />
+      <workItem from="1608891894427" duration="7856000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1607378746529</created>
@@ -172,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608073512641</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added PlayableShape module">
+      <created>1608594526166</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608594526167</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +224,7 @@
     <MESSAGE value="automatic down" />
     <MESSAGE value="Added custom EventEmitter" />
     <MESSAGE value="start of BoardModule" />
-    <option name="LAST_COMMIT_MESSAGE" value="start of BoardModule" />
+    <MESSAGE value="added PlayableShape module" />
+    <option name="LAST_COMMIT_MESSAGE" value="added PlayableShape module" />
   </component>
 </project>
