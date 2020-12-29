@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ed50663-20f6-46a0-9772-9e5c1abbf394" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/game/GameActions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/BoardModule.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/IBoardModule.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/CollisionDetector/CollisionDetector.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/CollisionDetector/ICollisionDetector.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/IPlayableShapeModule.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/PlayableShapeModule.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/ISettingsModule.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/SettingsModule.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/game/GameHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/GameHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Settings/ISettingsModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/ISettingsModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Settings/SettingsModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/SettingsModule.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +89,8 @@
       <workItem from="1607301982063" duration="5954000" />
       <workItem from="1607357580256" duration="4295000" />
       <workItem from="1607379770028" duration="75835000" />
-      <workItem from="1608891894427" duration="7856000" />
+      <workItem from="1608891894427" duration="25149000" />
+      <workItem from="1609178856797" duration="9846000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1607378746529</created>
@@ -192,7 +183,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608594526167</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="refactor and bindings">
+      <created>1609022288776</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1609022288776</updated>
+    </task>
+    <task id="LOCAL-00015" summary="more changes">
+      <created>1609192894277</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1609192894277</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +230,8 @@
     <MESSAGE value="Added custom EventEmitter" />
     <MESSAGE value="start of BoardModule" />
     <MESSAGE value="added PlayableShape module" />
-    <option name="LAST_COMMIT_MESSAGE" value="added PlayableShape module" />
+    <MESSAGE value="refactor and bindings" />
+    <MESSAGE value="more changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="more changes" />
   </component>
 </project>
