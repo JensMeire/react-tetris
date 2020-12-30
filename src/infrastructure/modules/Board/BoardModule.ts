@@ -2,17 +2,37 @@ import {IGameEventEmitter} from "infrastructure/events/GameEventEmitter";
 import GameEvents from "infrastructure/events/GameEvents";
 import IBoardModule, {Grid} from "infrastructure/modules/Board/IBoardModule";
 import IShape from "infrastructure/shape/IShape";
-import {Position} from "infrastructure/modules/PlayableShape/IPlayableShapeModule";
+import IPlayableShapeModule, {Position} from "infrastructure/modules/PlayableShape/IPlayableShapeModule";
+import ICollisionDetector from "infrastructure/modules/CollisionDetector/ICollisionDetector";
+import {IBoardSettings} from "infrastructure/modules/Settings/ISettingsModule";
+import set = Reflect.set;
 
 const EmptyGrid = [] as Grid;
 
 export class BoardModule implements IBoardModule {
   private _board: Grid;
   private _eventEmitter: IGameEventEmitter;
+  private _shapeModule: IPlayableShapeModule;
+  private _collisionDetector: ICollisionDetector;
+  private _settings!: IBoardSettings;
 
-  constructor(emitter: IGameEventEmitter) {
+  constructor(emitter: IGameEventEmitter, shapeModule: IPlayableShapeModule, collisionDetector: ICollisionDetector) {
+    this._shapeModule = shapeModule;
+    this._collisionDetector = collisionDetector;
     this._board = EmptyGrid;
     this._eventEmitter = emitter;
+  }
+
+  registerListeners(): void {
+    this._eventEmitter.subscribe(GameEvents.BoardSettingsChanged, this.setSettings);
+  }
+
+  setSettings(settings: IBoardSettings | undefined) {
+    if(!settings)
+      return;
+
+    this._settings = settings;
+    //Init Grid
   }
 
   subscribeBoardChanged(cb: (grid?: Grid) => void): string {
@@ -23,12 +43,40 @@ export class BoardModule implements IBoardModule {
     this._eventEmitter.unsubscribe(GameEvents.BoardChanged, subscriptionId);
   }
 
+  canMoveDown(): boolean {
+    const shape = this._shapeModule.getShape();
+    if (!shape)
+      return false;
+
+    return this._collisionDetector.canMoveDown(shape, this._shapeModule.getPosition(), this._board);
+  }
+
+  canMoveLeft(): boolean {
+    const shape = this._shapeModule.getShape();
+    if (!shape)
+      return false;
+
+    return this._collisionDetector.canMoveLeft(shape, this._shapeModule.getPosition(), this._board);
+  }
+
+  canMoveRight(): boolean {
+    const shape = this._shapeModule.getShape();
+    if (!shape)
+      return false;
+
+    return this._collisionDetector.canMoveRight(shape, this._shapeModule.getPosition(), this._board);
+  }
+
   getGrid(): Grid {
     return this._board;
   }
 
-  lockShape(shape: IShape, position: Position): void {
-    const [xStart, yStart] = position;
+  lockShape(): void {
+    const [xStart, yStart] = this._shapeModule.getPosition();
+    const shape = this._shapeModule.getShape();
+    if(!shape)
+      return;
+
     const [width, height] = shape.getSize();
     const shapeGrid = shape.getGrid();
     for(let y = yStart, j = height - 1; j === 0; j--, y--) {
@@ -37,5 +85,32 @@ export class BoardModule implements IBoardModule {
           this._board[y][x] = shape.getColor();
       }
     }
+  }
+
+  moveDown(): void {
+    if(this.canMoveDown())
+      this._shapeModule?.moveDown();
+  }
+
+  moveLeft(): void {
+    if(this.canMoveLeft())
+      this._shapeModule?.moveLeft();
+  }
+
+  moveRight(): void {
+    if(this.canMoveRight())
+      this._shapeModule?.moveRight();
+  }
+
+  rotateLeft(): void {
+    this._shapeModule?.rotateLeft();
+  }
+
+  rotateRight(): void {
+    this._shapeModule?.rotateRight();
+  }
+
+  setShape(shape: IShape): void {
+    this._shapeModule.initializeNewShape(shape, this._board[0].length)
   }
 }

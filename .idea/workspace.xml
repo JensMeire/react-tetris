@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7ed50663-20f6-46a0-9772-9e5c1abbf394" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Settings/ISettingsModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/ISettingsModule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Settings/SettingsModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Settings/SettingsModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Board/BoardModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/BoardModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Board/IBoardModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/IBoardModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/IPlayableShapeModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/IPlayableShapeModule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/PlayableShapeModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/PlayableShapeModule.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,7 @@
       <workItem from="1607357580256" duration="4295000" />
       <workItem from="1607379770028" duration="75835000" />
       <workItem from="1608891894427" duration="25149000" />
-      <workItem from="1609178856797" duration="9846000" />
+      <workItem from="1609178856797" duration="21687000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1607378746529</created>
@@ -197,7 +199,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609192894277</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="more changes, not much time">
+      <created>1609278095304</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1609278095304</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add .idea to gitignore">
+      <created>1609278140828</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1609278140828</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +248,8 @@
     <MESSAGE value="added PlayableShape module" />
     <MESSAGE value="refactor and bindings" />
     <MESSAGE value="more changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="more changes" />
+    <MESSAGE value="more changes, not much time" />
+    <MESSAGE value="add .idea to gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="add .idea to gitignore" />
   </component>
 </project>

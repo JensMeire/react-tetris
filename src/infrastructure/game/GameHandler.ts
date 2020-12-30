@@ -65,7 +65,7 @@ export default class GameHandler {
   }
 
   tick(): void {
-    if(!this._playableShapeModule.moveDown(this._boardModule.getGrid())) {
+    if(!this._boardModule.moveDown(this._boardModule.getGrid())) {
       const shape = this._playableShapeModule.getShape();
       const position = this._playableShapeModule.getPosition();
       if(!shape) return;

@@ -4,9 +4,9 @@ import IShape from "infrastructure/shape/IShape";
 export type Position = [number, number];
 
 export default interface IPlayableShapeModule {
-  moveDown: (grid: Grid) => boolean;
-  moveLeft: (grid: Grid) => boolean;
-  moveRight: (grid: Grid) => boolean;
+  moveDown: () => void;
+  moveLeft: () => void;
+  moveRight: () => void;
   rotateLeft: () => void;
   rotateRight: () => void;
   initializeNewShape: (shape: IShape, boardWidth: number) => void;
