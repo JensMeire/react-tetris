@@ -5,7 +5,6 @@ import IShape from "infrastructure/shape/IShape";
 import IPlayableShapeModule, {Position} from "infrastructure/modules/PlayableShape/IPlayableShapeModule";
 import ICollisionDetector from "infrastructure/modules/CollisionDetector/ICollisionDetector";
 import {IBoardSettings} from "infrastructure/modules/Settings/ISettingsModule";
-import set = Reflect.set;
 
 const EmptyGrid = [] as Grid;
 
@@ -15,12 +14,14 @@ export class BoardModule implements IBoardModule {
   private _shapeModule: IPlayableShapeModule;
   private _collisionDetector: ICollisionDetector;
   private _settings!: IBoardSettings;
+  private _canMoveDown: boolean;
 
   constructor(emitter: IGameEventEmitter, shapeModule: IPlayableShapeModule, collisionDetector: ICollisionDetector) {
     this._shapeModule = shapeModule;
     this._collisionDetector = collisionDetector;
     this._board = EmptyGrid;
     this._eventEmitter = emitter;
+    this._canMoveDown = false;
   }
 
   registerListeners(): void {
@@ -48,7 +49,9 @@ export class BoardModule implements IBoardModule {
     if (!shape)
       return false;
 
-    return this._collisionDetector.canMoveDown(shape, this._shapeModule.getPosition(), this._board);
+    const canMoveDown = this._collisionDetector.canMoveDown(shape, this._shapeModule.getPosition(), this._board);
+    this._canMoveDown = canMoveDown;
+    return canMoveDown;
   }
 
   canMoveLeft(): boolean {
@@ -88,8 +91,10 @@ export class BoardModule implements IBoardModule {
   }
 
   moveDown(): void {
-    if(this.canMoveDown())
+    if(this.canMoveDown()) {
       this._shapeModule?.moveDown();
+      this._canMoveDown = false;
+    }
   }
 
   moveLeft(): void {

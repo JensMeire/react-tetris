@@ -8,6 +8,9 @@ export default interface IBoardModule {
   subscribeBoardChanged: (cb: (grid?: Grid) => void) => string;
   unsubscribeBoardChanged: (subscriptionId: string) => void;
   lockShape: () => void;
+  canMoveDown: () => boolean;
+  canMoveRight: () => boolean;
+  canMoveLeft: () => boolean;
   moveDown: () => void;
   moveLeft: () => void;
   moveRight: () => void;

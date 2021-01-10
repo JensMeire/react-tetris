@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ed50663-20f6-46a0-9772-9e5c1abbf394" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infrastructure/game/GameHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/game/GameHandler.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Board/BoardModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/BoardModule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/Board/IBoardModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/Board/IBoardModule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/IPlayableShapeModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/IPlayableShapeModule.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/PlayableShapeModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrastructure/modules/PlayableShape/PlayableShapeModule.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +90,7 @@
       <workItem from="1607357580256" duration="4295000" />
       <workItem from="1607379770028" duration="75835000" />
       <workItem from="1608891894427" duration="25149000" />
-      <workItem from="1609178856797" duration="21687000" />
+      <workItem from="1609178856797" duration="23598000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1607378746529</created>
@@ -213,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609278140828</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="module rearrangement">
+      <created>1609367999514</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1609367999529</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +255,7 @@
     <MESSAGE value="more changes" />
     <MESSAGE value="more changes, not much time" />
     <MESSAGE value="add .idea to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add .idea to gitignore" />
+    <MESSAGE value="module rearrangement" />
+    <option name="LAST_COMMIT_MESSAGE" value="module rearrangement" />
   </component>
 </project>

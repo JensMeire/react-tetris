@@ -12,6 +12,8 @@ export default class GameHandler {
   private _settingsModule: ISettingsModule;
   private _eventEmitter: IGameEventEmitter;
   private _shapeQueue: IShapeQueueModule;
+  private _gameIntervalId!: NodeJS.Timeout;
+  private _isPaused: boolean;
 
   constructor(eventEmitter: IGameEventEmitter, boardModule: IBoardModule, playableShapeModule: IPlayableShapeModule, settingsModule: ISettingsModule, shapeQueue: IShapeQueueModule) {
     this._eventEmitter = eventEmitter;
@@ -19,6 +21,7 @@ export default class GameHandler {
     this._playableShapeModule = playableShapeModule;
     this._settingsModule = settingsModule;
     this._shapeQueue = shapeQueue;
+    this._isPaused = false;
     this.initializeBindings();
     this.registerEvents();
   }
@@ -27,13 +30,18 @@ export default class GameHandler {
     this._settingsModule.subscribeKeyBindingChanged(this.updateBindingsOnKeyChange)
   }
 
+  performAction(cb: Function): void {
+    if(!this._isPaused)
+      cb();
+  }
+
   getActions(): GameActionFunctionBinds {
     return {
-      [GameActions.MoveDown]: this._playableShapeModule.moveDown,
-      [GameActions.MoveRight]: this._playableShapeModule.moveRight,
-      [GameActions.MoveLeft]: this._playableShapeModule.moveLeft,
-      [GameActions.RotateLeft]: this._playableShapeModule.rotateLeft,
-      [GameActions.RotateRight]: this._playableShapeModule.rotateRight
+      [GameActions.MoveDown]: () => this.performAction(this._playableShapeModule.moveDown),
+      [GameActions.MoveRight]: () => this.performAction(this._playableShapeModule.moveRight),
+      [GameActions.MoveLeft]: () => this.performAction(this._playableShapeModule.moveLeft),
+      [GameActions.RotateLeft]: () => this.performAction(this._playableShapeModule.rotateLeft),
+      [GameActions.RotateRight]: () => this.performAction(this._playableShapeModule.rotateRight)
     }
   }
 
@@ -61,19 +69,36 @@ export default class GameHandler {
   }
 
   startGame(): void {
+    this._gameIntervalId = setInterval(this.tick, 10000)
+  }
 
+  pauseGame(): void {
+    this._isPaused = true;
+  }
+
+  unPauseGame(): void {
+    this._isPaused = false;
+  }
+
+  endGame(): void {
+    if(this._gameIntervalId)
+      return;
+
+    clearInterval(this._gameIntervalId);
   }
 
   tick(): void {
-    if(!this._boardModule.moveDown(this._boardModule.getGrid())) {
-      const shape = this._playableShapeModule.getShape();
-      const position = this._playableShapeModule.getPosition();
-      if(!shape) return;
-      this._boardModule.lockShape(shape, position);
-      //emit shape locked
+    if(this._isPaused)
+      return;
+
+    if(!this._boardModule.canMoveDown()) {
+      this._boardModule.lockShape();
       this._shapeQueue.shiftShapes();
-      this._playableShapeModule.initializeNewShape(this._shapeQueue.getCurrentShape());
+      this._boardModule.setShape(this._shapeQueue.getCurrentShape());
+      return;
     }
+
+    this._boardModule.moveDown();
   }
 }
 
